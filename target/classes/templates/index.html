@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<title>Sistema de Información Académica</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/myStyle.css}">
+	<script type="text/javascript" th:src="@{js/myScript.js}"></script>
+</head>
+
+<body>
+	<div id="conTable">
+		<h2>Gestionar Cursos</h2><br>
+		<center>
+			<a th:href="@{/nuevoCurso}"><button type="button" class="btn btn-outline-secondary">Agregar
+					Curso</button></a>
+			<button type="button" class="btn btn-outline-secondary"
+				onclick="javascript:contarCursos(0);">Primaria</button>
+			<button type="button" class="btn btn-outline-secondary"
+				onclick="javascript:contarCursos(1);">Secundaria</button>
+		</center>
+		<br>
+		<table class="table table-striped">
+			<tr>
+				<td></td>
+				<td class="titulo">
+					<h5>Código</h5>
+				</td>
+				<td class="titulo">
+					<h5>Grado</h5>
+				</td>
+				<td class="titulo">
+					<h5>Grupo</h5>
+				</td>
+			</tr>
+			<tr th:each="curso:${cursos}">
+				<td>
+					<a th:href="@{/mostrarCurso/}+${curso.codCurso}"><img src="img/mostrar.png" width="23px"></a>
+					<a th:href="@{/editarCurso/}+${curso.codCurso}"><img src="img/editar.png" width="15px"></a>
+					<a th:href="@{/borrarCurso/}+${curso.codCurso}"><img src="img/borrar.png" width="15px"></a>
+				</td>
+				<td class="textoTab">
+					<font th:text=${curso.codCurso}></font>
+				</td>
+				<td class="textoTab">
+					<font th:text=${curso.Grado}></font>
+				</td>
+				<td class="textoTab">
+					<font th:text=${curso.Grupo}></font>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+</html>

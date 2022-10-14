@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<title>Sistema de Información Académica</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/myStyle.css}">
+</head>
+
+<body>
+	<div id="conTable">
+		<h2>Agregar Estudiante</h2><br>
+		<form name="CUR" th:action="@{/saveEstudiante}" method="post">
+			<div class="mb-3">
+				<label for="codCurso" class="form-label">Curso:</label>
+				<select class="form-select" aria-label="codCursoHelp" name="codCurso" id="codCurso">
+					<option th:each="curso:${cursos}" th:value="${curso.codCurso}"><font th:text="${curso.Grado}+' '+${curso.Grupo}"></font></option>
+				</select>
+				<div id="codCursoHelp" class="form-text">Seleccione el Grado y Grupo que cursa el estudiante.</div>
+			</div>
+
+		</form>
+	</div>
+</body>
+
+</html>
